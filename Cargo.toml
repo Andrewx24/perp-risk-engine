@@ -1,0 +1,40 @@
+[package]
+name = "perp-risk-engine"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+description = "Deterministic risk & liquidation engine for perpetual futures, fed by a quorum price oracle over live venue WebSockets"
+license = "MIT"
+readme = "README.md"
+
+[dependencies]
+axum = { version = "0.8.9", features = ["ws"] }
+futures = "0.3.34"
+rustls = { version = "0.23.45", default-features = false, features = ["ring", "std", "tls12"] }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.151"
+thiserror = "2.0.21"
+tokio = { version = "1.53.1", features = ["full"] }
+tokio-tungstenite = { version = "0.30.0", features = ["rustls-tls-webpki-roots"] }
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.23", features = ["env-filter"] }
+
+[dev-dependencies]
+criterion = "0.8.2"
+proptest = "1.11.0"
+
+[[bench]]
+name = "engine"
+harness = false
+
+[profile.release]
+# A wrapped balance is worse than a crashed process. Keep overflow checks on in
+# release so fixed-point arithmetic panics loudly instead of silently wrapping.
+overflow-checks = true
+lto = "fat"
+codegen-units = 1
+
+[profile.bench]
+overflow-checks = true
+lto = "fat"
+codegen-units = 1
