@@ -1,0 +1,8 @@
+# Seeds for failure cases proptest has generated in the past. It is
+# automatically read and these particular cases re-run before any
+# novel cases are generated.
+#
+# It is recommended to check this file in to source control so that
+# everyone who runs the test benefits from these saved cases.
+cc cd8d42047af378a6e2bebc464a287eb8912a7ff9541757ed8f92382f72baa959 # shrinks to ops = [Withdraw(AccountId(1), 1), Deposit(AccountId(2), 6747), Trade(AccountId(2), MarketId(2), 1, 0), Deposit(AccountId(1), 1), Deposit(AccountId(1), 1), Deposit(AccountId(6), 63311), Move(MarketId(1), -773), Trade(AccountId(6), MarketId(1), -4925, 0), Move(MarketId(1), 2372)]
+cc f736ed8903485d91a9ee499b51949073300d004ed5c07e490d1410390171c0eb # shrinks to ops = [Move(MarketId(1), 1575), Deposit(AccountId(2), 7), Move(MarketId(1), 469), Trade(AccountId(2), MarketId(3), 1, 0, 0), Deposit(AccountId(2), 32909), Trade(AccountId(2), MarketId(1), 13825, 2, 42), Move(MarketId(1), -2089), Move(MarketId(1), -900)]
